@@ -131,101 +131,120 @@ public class Cell {
                 }
             }
             case Bear b -> {
-                entities.add(b);
-                countBear++;
-                b.setI(i);
-                b.setJ(j);
+                if (countBear < b.getMaxPopulation()) {
+                    entities.add(b);
+                    countBear++;
+                    b.setI(i);
+                    b.setJ(j);
+                }
             }
             case Eagle e -> {
-                entities.add(e);
-                countEagle++;
-                e.setI(i);
-                e.setJ(j);
+                if (countEagle < e.getMaxPopulation()) {
+                    entities.add(e);
+                    countEagle++;
+                    e.setI(i);
+                    e.setJ(j);
+                }
             }
             case Fox f -> {
-                entities.add(f);
-                countFox++;
-                f.setI(i);
-                f.setJ(j);
+                if (countFox < f.getMaxPopulation()) {
+                    entities.add(f);
+                    countFox++;
+                    f.setI(i);
+                    f.setJ(j);
+                }
             }
             case Snake s -> {
-                entities.add(s);
-                countSnake++;
-                s.setI(i);
-                s.setJ(j);
+                if (countSnake < s.getMaxPopulation()) {
+                    entities.add(s);
+                    countSnake++;
+                    s.setI(i);
+                    s.setJ(j);
+                }
             }
             case Wolf w -> {
-                if (entities.add(w)) {
+                if (countWolf < w.getMaxPopulation()) {
+                    entities.add(w);
                     countWolf++;
                     w.setI(i);
                     w.setJ(j);
                 }
             }
-            case Caterpillar cat -> {
-                if (entities.add(cat)) {
+            case Caterpillar caterpillar -> {
+                if (countCaterpillar < caterpillar.getMaxPopulation()) {
+                    entities.add(caterpillar);
                     countCaterpillar++;
-                    cat.setI(i);
-                    cat.setJ(j);
+                    caterpillar.setI(i);
+                    caterpillar.setJ(j);
                 }
             }
             case Cow cow -> {
-                if (entities.add(cow)) {
+                if (countCow < cow.getMaxPopulation()) {
+                    entities.add(cow);
                     countCow++;
                     cow.setI(i);
                     cow.setJ(j);
                 }
             }
             case Deer deer -> {
-                if (entities.add(deer)) {
+                if (countDeer < deer.getMaxPopulation()) {
+                    entities.add(deer);
                     countDeer++;
                     deer.setI(i);
                     deer.setJ(j);
                 }
             }
             case Duck duck -> {
-                if (entities.add(duck)) {
+                if (countDuck < duck.getMaxPopulation()) {
+                    entities.add(duck);
                     countDuck++;
                     duck.setI(i);
                     duck.setJ(j);
                 }
             }
             case Goat goat -> {
-                if (entities.add(goat)) {
+                if (countGoat < goat.getMaxPopulation()) {
+                    entities.add(goat);
                     countGoat++;
                     goat.setI(i);
                     goat.setJ(j);
                 }
             }
             case Hamster hamster -> {
-                if (entities.add(hamster)) {
+                if (countHamster < hamster.getMaxPopulation()) {
+                    entities.add(hamster);
                     countHamster++;
                     hamster.setI(i);
                     hamster.setJ(j);
                 }
             }
             case Horse horse -> {
-                if (entities.add(horse)) {
+                if (countHorse < horse.getMaxPopulation()) {
+                    entities.add(horse);
                     countHorse++;
                     horse.setI(i);
                     horse.setJ(j);
                 }
             }
             case Kangaroo kangaroo -> {
-                if (entities.add(kangaroo)) {
+                if (countKangaroo < kangaroo.getMaxPopulation()) {
+                    entities.add(kangaroo);
                     countKangaroo++;
                     kangaroo.setI(i);
                     kangaroo.setJ(j);
                 }
             }
             case Rabbit rabbit -> {
-                if (entities.add(rabbit)) {
+                if (countRabbit < rabbit.getMaxPopulation()) {
+                    entities.add(rabbit);
                     countRabbit++;
                     rabbit.setI(i);
                     rabbit.setJ(j);
                 }
             }
             case Sheep sheep -> {
-                if (entities.add(sheep)) {
+                if (countSheep < sheep.getMaxPopulation()) {
+                    entities.add(sheep);
                     countSheep++;
                     sheep.setI(i);
                     sheep.setJ(j);

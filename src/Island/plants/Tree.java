@@ -14,10 +14,10 @@ public class Tree extends Plants {
     private int i;
     private int j;
     private final int countDaysFlow = 2;
-    private AtomicInteger flowering = new AtomicInteger(1);
+    private AtomicInteger flowering = new AtomicInteger(2);
     private final int breedingPow = 2;
     private final int seedRate = 6;
-    private static final int maxPopulation = 100;
+    private static final int maxPopulation = 200;
 
     public Tree() {
         count.incrementAndGet();

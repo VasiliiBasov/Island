@@ -6,10 +6,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Fox extends Predator {
 
-    private double weight = 4.0;
-    private int maxPopulation = 50;
-    private int speed = 3;
-    private double amountOfFood = 1.0;
+    private double weight = 8.0;
+    private int maxPopulation = 30;
+    private int speed = 2;
+    private double amountOfFood = 2.0;
     private int survivable = 8;
     private int i;
     private int j;

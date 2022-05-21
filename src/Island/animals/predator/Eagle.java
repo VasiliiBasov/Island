@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Eagle extends Predator {
 
     private double weight = 6.0;
-    private int maxPopulation = 166;
+    private int maxPopulation = 20;
     private int speed = 4;
     private double amountOfFood = 1.0;
     private int survivable = 5;

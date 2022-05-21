@@ -6,9 +6,9 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Goat extends Herbivorous {
 
-    private double weight = 65.0;
-    private int maxPopulation = 107;
-    private int speed = 1;
+    private double weight = 60.0;
+    private int maxPopulation = 140;
+    private int speed = 2;
     private double amountOfFood = 10.0;
     private int survivable = 5;
     private int i;
@@ -52,6 +52,36 @@ public class Goat extends Herbivorous {
             if (getJ() < 0) setJ(0);
             Field.field[this.getI()][this.getJ()].add(this);
         }
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public int getMaxPopulation() {
+        return maxPopulation;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public double getAmountOfFood() {
+        return amountOfFood;
+    }
+
+    public int getSurvivable() {
+        return survivable;
+    }
+
+    @Override
+    public int getI() {
+        return i;
+    }
+
+    @Override
+    public int getJ() {
+        return j;
     }
 
     @Override

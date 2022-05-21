@@ -18,7 +18,7 @@ public class Main {
         System.out.println("start!");
 
         Field.start();
-        Field.distribute(new EntityFactory().entityFactory(1000, 1000, 3000, 3000, 4000, 2500, 10000, 1000, 3000, 8000, 4000, 9000, 2000, 3000, 6000, 4000));
+        Field.distribute(new EntityFactory().entityFactory(100, 100, 300, 300, 200, 200, 10000, 100, 300, 800, 400, 2000, 200, 300, 600, 400));
         //Field.distribute(new EntityFactory().entityFactory(10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
         Field.draw();
         TimeUnit.SECONDS.sleep(2);
@@ -35,7 +35,7 @@ public class Main {
             }
 
             Field.draw();
-            TimeUnit.MILLISECONDS.sleep(1000);
+            TimeUnit.MILLISECONDS.sleep(2000);
             step++;
         }
         executorService.shutdownNow();

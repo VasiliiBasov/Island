@@ -7,10 +7,10 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Hamster extends Herbivorous {
 
     private double weight = 0.03;
-    private int maxPopulation = 10000;
+    private int maxPopulation = 500;
     private int speed = 1;
-    private double amountOfFood = 0.0075;
-    private int survivable = 3;
+    private double amountOfFood = 0.01;
+    private int survivable = 2;
     private int i;
     private int j;
 
@@ -52,6 +52,36 @@ public class Hamster extends Herbivorous {
             if (getJ() < 0) setJ(0);
             Field.field[this.getI()][this.getJ()].add(this);
         }
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public int getMaxPopulation() {
+        return maxPopulation;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public double getAmountOfFood() {
+        return amountOfFood;
+    }
+
+    public int getSurvivable() {
+        return survivable;
+    }
+
+    @Override
+    public int getI() {
+        return i;
+    }
+
+    @Override
+    public int getJ() {
+        return j;
     }
 
     @Override

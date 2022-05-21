@@ -6,10 +6,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Snake extends Predator {
 
-    private double weight = 2.0;
-    private int maxPopulation = 123;
+    private double weight = 15.0;
+    private int maxPopulation = 3;
     private int speed = 1;
-    private double amountOfFood = 0.3;
+    private double amountOfFood = 3.0;
     private int survivable = 15;
     private int i;
     private int j;

@@ -14,10 +14,6 @@ public class Wolf extends Predator {
     private int i;
     private int j;
 
-    public static int aa = 0;
-    public static int bb = 0;
-    public static int cc = 0;
-    public static int dd = 0;
 
     public double getWeight() {
         return weight;

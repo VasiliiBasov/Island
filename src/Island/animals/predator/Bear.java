@@ -6,10 +6,10 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Bear extends Predator {
 
-    private double weight = 250.0;
-    private int maxPopulation = 7;
+    private double weight = 500.0;
+    private int maxPopulation = 5;
     private int speed = 2;
-    private double amountOfFood = 38.0;
+    private double amountOfFood = 80.0;
     private int survivable = 15;
     private int i;
     private int j;

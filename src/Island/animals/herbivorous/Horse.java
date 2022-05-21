@@ -6,11 +6,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Horse extends Herbivorous {
 
-    private double weight = 300.0;
-    private int maxPopulation = 23;
-    private int speed = 3;
-    private double amountOfFood = 45.0;
-    private int survivable = 5;
+    private double weight = 400.0;
+    private int maxPopulation = 20;
+    private int speed = 4;
+    private double amountOfFood = 60.0;
+    private int survivable = 9;
     private int i;
     private int j;
 
@@ -52,6 +52,36 @@ public class Horse extends Herbivorous {
             if (getJ() < 0) setJ(0);
             Field.field[this.getI()][this.getJ()].add(this);
         }
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public int getMaxPopulation() {
+        return maxPopulation;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public double getAmountOfFood() {
+        return amountOfFood;
+    }
+
+    public int getSurvivable() {
+        return survivable;
+    }
+
+    @Override
+    public int getI() {
+        return i;
+    }
+
+    @Override
+    public int getJ() {
+        return j;
     }
 
     @Override

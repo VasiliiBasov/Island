@@ -7,10 +7,10 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Kangaroo extends Herbivorous {
 
     private double weight = 47.0;
-    private int maxPopulation = 149;
+    private int maxPopulation = 150;
     private int speed = 2;
     private double amountOfFood = 7.0;
-    private int survivable = 8;
+    private int survivable = 5;
     private int i;
     private int j;
 
@@ -52,6 +52,36 @@ public class Kangaroo extends Herbivorous {
             if (getJ() < 0) setJ(0);
             Field.field[this.getI()][this.getJ()].add(this);
         }
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public int getMaxPopulation() {
+        return maxPopulation;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public double getAmountOfFood() {
+        return amountOfFood;
+    }
+
+    public int getSurvivable() {
+        return survivable;
+    }
+
+    @Override
+    public int getI() {
+        return i;
+    }
+
+    @Override
+    public int getJ() {
+        return j;
     }
 
     @Override
