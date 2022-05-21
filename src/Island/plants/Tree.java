@@ -13,11 +13,11 @@ public class Tree extends Plants {
     private double weight = 10.0;
     private int i;
     private int j;
-    private final int countDaysFlow = 6;
-    private AtomicInteger flowering = new AtomicInteger(2);
-    private final int breedingPow = 1;
-    private final int seedRate = 3;
-    private static final int maxPopulation = 3000;
+    private final int countDaysFlow = 2;
+    private AtomicInteger flowering = new AtomicInteger(1);
+    private final int breedingPow = 2;
+    private final int seedRate = 6;
+    private static final int maxPopulation = 100;
 
     public Tree() {
         count.incrementAndGet();
@@ -50,21 +50,16 @@ public class Tree extends Plants {
 
     @Override
     public void eaten() {
-        count.incrementAndGet();
 
     }
 
     @Override
     public void run() {
-        grow();
+        grow(flowering, i, j);
     }
 
-    public void grow() {
-        ingrow(flowering, i, j);
-        this.flowering.decrementAndGet();
-    }
 
-    private void ingrow(AtomicInteger flowering, int y, int x) {
+    public synchronized void grow(AtomicInteger flowering, int y, int x) {
 
         if (flowering.get() == 0) {
             int amount = ThreadLocalRandom.current().nextInt(this.breedingPow + 1);
@@ -100,5 +95,7 @@ public class Tree extends Plants {
 
             }
         }
+        this.flowering.decrementAndGet();
     }
+
 }

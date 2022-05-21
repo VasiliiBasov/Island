@@ -1,7 +1,5 @@
 package Island;
 
-import Island.animals.herbivorous.Rabbit;
-import Island.animals.predator.Wolf;
 import Island.plants.Tree;
 
 import java.util.*;
@@ -20,13 +18,16 @@ public class Main {
         System.out.println("start!");
 
         Field.start();
-        Field.distribute(new EntityFactory().entityFactory(10000, 1000, 3000, 3000, 4000, 2500, 10000, 1000, 3000, 8000, 4000, 9000, 2000, 3000, 6000, 4000));
+        Field.distribute(new EntityFactory().entityFactory(1000, 1000, 3000, 3000, 4000, 2500, 10000, 1000, 3000, 8000, 4000, 9000, 2000, 3000, 6000, 4000));
+        //Field.distribute(new EntityFactory().entityFactory(10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
         Field.draw();
         TimeUnit.SECONDS.sleep(2);
 
+
         while (step < 100) {
-            System.out.println(entities.size());
+            executorService = Executors.newCachedThreadPool();
             System.out.println(Tree.count.get());
+            System.out.println(entities.size());
             for (Entity entity : entities) {
                 if (entity != null) {
                     executorService.submit(entity);
