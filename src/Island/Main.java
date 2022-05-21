@@ -1,5 +1,7 @@
 package Island;
 
+import Island.animals.herbivorous.Goat;
+import Island.animals.predator.Wolf;
 import Island.plants.Tree;
 
 import java.util.*;
@@ -16,17 +18,19 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println("start!");
-
+        Entity wolf = new Wolf();
+        System.out.println(wolf.getClass().getSimpleName());
         Field.start();
-        Field.distribute(new EntityFactory().entityFactory(100, 100, 300, 300, 200, 200, 10000, 100, 300, 800, 400, 2000, 200, 300, 600, 400));
-        //Field.distribute(new EntityFactory().entityFactory(10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
+        //Field.distribute(new EntityFactory().entityFactory(100, 100, 300, 300, 200, 200, 10000, 100, 300, 800, 400, 2000, 200, 300, 600, 400));
+        Field.distribute(new EntityFactory().entityFactory(0, 0, 0, 0, 0, 1000, 0, 0, 0, 0, 10000, 0, 0, 0, 0, 0));
         Field.draw();
         TimeUnit.SECONDS.sleep(2);
 
 
         while (step < 100) {
             executorService = Executors.newCachedThreadPool();
-            System.out.println(Tree.count.get());
+            System.out.println(Wolf.count.get());
+            System.out.println(Goat.count.get());
             System.out.println(entities.size());
             for (Entity entity : entities) {
                 if (entity != null) {
@@ -35,7 +39,7 @@ public class Main {
             }
 
             Field.draw();
-            TimeUnit.MILLISECONDS.sleep(2000);
+            TimeUnit.MILLISECONDS.sleep(500);
             step++;
         }
         executorService.shutdownNow();

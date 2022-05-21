@@ -61,6 +61,7 @@ public class Cell {
             case Wolf w -> {
                 if (entities.remove(w)) {
                     countWolf--;
+                    Wolf.count.decrementAndGet();
                 }
             }
             case Caterpillar cat -> {
@@ -86,6 +87,7 @@ public class Cell {
             case Goat goat -> {
                 if (entities.remove(goat)) {
                     countGoat--;
+                    Goat.count.decrementAndGet();
                 }
             }
             case Hamster hamster -> {
@@ -255,7 +257,7 @@ public class Cell {
     }
 
     public synchronized void findDominate() {
-        String d = "пусто";
+        String d = "—";
         int max = 0;
         if (countBear > max) {
             max = countBear;
@@ -366,5 +368,45 @@ public class Cell {
 
     public int getCountWolf() {
         return countWolf;
+    }
+
+    public int getCountCaterpillar() {
+        return countCaterpillar;
+    }
+
+    public int getCountCow() {
+        return countCow;
+    }
+
+    public int getCountDeer() {
+        return countDeer;
+    }
+
+    public int getCountDuck() {
+        return countDuck;
+    }
+
+    public int getCountGoat() {
+        return countGoat;
+    }
+
+    public int getCountHamster() {
+        return countHamster;
+    }
+
+    public int getCountHorse() {
+        return countHorse;
+    }
+
+    public int getCountKangaroo() {
+        return countKangaroo;
+    }
+
+    public int getCountRabbit() {
+        return countRabbit;
+    }
+
+    public int getCountSheep() {
+        return countSheep;
     }
 }

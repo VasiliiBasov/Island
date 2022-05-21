@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Bear extends Predator {
 
-    private double weight = 500.0;
+    private Double weight = 500.0;
     private int maxPopulation = 5;
     private int speed = 2;
     private double amountOfFood = 80.0;
@@ -50,7 +50,7 @@ public class Bear extends Predator {
         return j;
     }
 
-    @Override
+
     public void eat() {
 
     }
@@ -62,26 +62,30 @@ public class Bear extends Predator {
 
     @Override
     public void move() {
+        int y = getI();
+        int x = getJ();
         int a = ThreadLocalRandom.current().nextInt(speed + 1);
         int b = ThreadLocalRandom.current().nextInt(4);
         if (a != 0) {
-            Field.field[getI()][getJ()].remove(this);
 
             if (b == 0) {
-                setI(getI() - a);
+                y -= a;
             } else if (b == 1) {
-                setJ(getJ() - a);
+                x -= a;
             } else if (b == 2) {
-                setI(getI() + a);
+                y += a;
             } else {
-                setJ(getJ() + a);
+                x += a;
             }
 
-            if (getI() >= Field.HEIGHT) setI(Field.HEIGHT - 1);
-            if (getI() < 0) setI(0);
-            if (getJ() >= Field.WIDTH) setJ(Field.WIDTH - 1);
-            if (getJ() < 0) setJ(0);
-            Field.field[this.getI()][this.getJ()].add(this);
+            if (y >= Field.HEIGHT) y = Field.HEIGHT - 1;
+            if (y < 0) y = 0;
+            if (x >= Field.WIDTH) x = Field.WIDTH - 1;
+            if (x < 0) x = 0;
+            if (Field.field[y][x].getCountBear() < maxPopulation) {
+                Field.field[getI()][getJ()].remove(this);
+                Field.field[y][x].add(this);
+            }
         }
     }
 

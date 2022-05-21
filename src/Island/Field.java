@@ -20,6 +20,7 @@ public class Field {
     }
 
     public static void draw() {
+        Main.entities = new HashSet<>();
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
                 field[i][j].entities.stream()
