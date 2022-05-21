@@ -33,22 +33,13 @@ public class Field {
 
     public static void distribute(HashSet<Entity> entities) {
 
-//        entities.stream()
-//                .forEach(e -> {
-//                    int i = new Random().nextInt(HEIGHT);
-//                    int j = new Random().nextInt(WIDTH);
-//                    field[i][j].add(e);
-//                    Main.entities.add(e);
-//                });
 
-        for (Entity entity: entities) {
+        for (Entity entity : entities) {
             int i = new Random().nextInt(HEIGHT);
             int j = new Random().nextInt(WIDTH);
             field[i][j].add(entity);
         }
     }
-
-
 
 
 }

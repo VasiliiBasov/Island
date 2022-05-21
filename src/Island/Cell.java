@@ -5,9 +5,6 @@ import Island.animals.herbivorous.*;
 import Island.plants.Tree;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Cell {
     public String dominate;
@@ -43,92 +40,76 @@ public class Cell {
         switch (entity) {
             case Tree t -> {
                 entities.remove(t);
-//                allEntities.remove(t);
                 countTree--;
             }
             case Bear b -> {
                 entities.remove(b);
-//                allEntities.remove(b);
                 countBear--;
             }
             case Eagle e -> {
                 entities.remove(e);
-//                allEntities.remove(e);
                 countEagle--;
             }
             case Fox f -> {
                 entities.remove(f);
-//                allEntities.remove(f);
                 countFox--;
             }
             case Snake s -> {
                 entities.remove(s);
-//                allEntities.remove(s);
                 countSnake--;
             }
             case Wolf w -> {
                 if (entities.remove(w)) {
-//                    allEntities.remove(w);
                     countWolf--;
                 }
             }
             case Caterpillar cat -> {
                 if (entities.remove(cat)) {
-//                    allEntities.remove(cat);
                     countCaterpillar--;
                 }
             }
             case Cow cow -> {
                 if (entities.remove(cow)) {
-//                    allEntities.remove(cow);
                     countCow--;
                 }
             }
             case Deer deer -> {
                 if (entities.remove(deer)) {
-//                    allEntities.remove(deer);
                     countDeer--;
                 }
             }
             case Duck duck -> {
                 if (entities.remove(duck)) {
-//                    allEntities.remove(duck);
                     countDuck--;
                 }
             }
             case Goat goat -> {
                 if (entities.remove(goat)) {
-//                    allEntities.remove(goat);
                     countGoat--;
                 }
             }
             case Hamster hamster -> {
                 if (entities.remove(hamster)) {
-//                    allEntities.remove(hamster);
                     countHamster--;
                 }
             }
             case Horse horse -> {
                 if (entities.remove(horse)) {
-//                    allEntities.remove(horse);
                     countHorse--;
                 }
             }
             case Kangaroo kangaroo -> {
                 if (entities.remove(kangaroo)) {
-//                    allEntities.remove(kangaroo);
                     countKangaroo--;
                 }
             }
             case Rabbit rabbit -> {
                 if (entities.remove(rabbit)) {
-//                    allEntities.remove(rabbit);
                     countRabbit--;
                 }
             }
             case Sheep sheep -> {
                 if (entities.remove(sheep)) {
-//                    allEntities.remove(sheep);
                     countSheep--;
                 }
             }
@@ -141,7 +122,6 @@ public class Cell {
     public synchronized void add(Object entity) {
         switch (entity) {
             case Tree t -> {
-//                allEntities.add(t);
                 if (countTree < t.getMaxPopulation()) {
                     entities.add(t);
                     countTree++;
@@ -152,35 +132,30 @@ public class Cell {
             }
             case Bear b -> {
                 entities.add(b);
-//                allEntities.add(b);
                 countBear++;
                 b.setI(i);
                 b.setJ(j);
             }
             case Eagle e -> {
                 entities.add(e);
-//                allEntities.add(e);
                 countEagle++;
                 e.setI(i);
                 e.setJ(j);
             }
             case Fox f -> {
                 entities.add(f);
-//                allEntities.add(f);
                 countFox++;
                 f.setI(i);
                 f.setJ(j);
             }
             case Snake s -> {
                 entities.add(s);
-//                allEntities.add(s);
                 countSnake++;
                 s.setI(i);
                 s.setJ(j);
             }
             case Wolf w -> {
                 if (entities.add(w)) {
-//                    allEntities.add(w);
                     countWolf++;
                     w.setI(i);
                     w.setJ(j);
@@ -188,7 +163,6 @@ public class Cell {
             }
             case Caterpillar cat -> {
                 if (entities.add(cat)) {
-//                    allEntities.add(cat);
                     countCaterpillar++;
                     cat.setI(i);
                     cat.setJ(j);
@@ -196,7 +170,6 @@ public class Cell {
             }
             case Cow cow -> {
                 if (entities.add(cow)) {
-//                    allEntities.add(cow);
                     countCow++;
                     cow.setI(i);
                     cow.setJ(j);
@@ -204,7 +177,6 @@ public class Cell {
             }
             case Deer deer -> {
                 if (entities.add(deer)) {
-//                    allEntities.add(deer);
                     countDeer++;
                     deer.setI(i);
                     deer.setJ(j);
@@ -212,7 +184,6 @@ public class Cell {
             }
             case Duck duck -> {
                 if (entities.add(duck)) {
-//                    allEntities.add(duck);
                     countDuck++;
                     duck.setI(i);
                     duck.setJ(j);
@@ -220,7 +191,6 @@ public class Cell {
             }
             case Goat goat -> {
                 if (entities.add(goat)) {
-//                    allEntities.add(goat);
                     countGoat++;
                     goat.setI(i);
                     goat.setJ(j);
@@ -228,7 +198,6 @@ public class Cell {
             }
             case Hamster hamster -> {
                 if (entities.add(hamster)) {
-//                    allEntities.add(hamster);
                     countHamster++;
                     hamster.setI(i);
                     hamster.setJ(j);
@@ -236,7 +205,6 @@ public class Cell {
             }
             case Horse horse -> {
                 if (entities.add(horse)) {
-//                    allEntities.add(horse);
                     countHorse++;
                     horse.setI(i);
                     horse.setJ(j);
@@ -244,7 +212,6 @@ public class Cell {
             }
             case Kangaroo kangaroo -> {
                 if (entities.add(kangaroo)) {
-//                    allEntities.add(kangaroo);
                     countKangaroo++;
                     kangaroo.setI(i);
                     kangaroo.setJ(j);
@@ -252,7 +219,6 @@ public class Cell {
             }
             case Rabbit rabbit -> {
                 if (entities.add(rabbit)) {
-//                    allEntities.add(rabbit);
                     countRabbit++;
                     rabbit.setI(i);
                     rabbit.setJ(j);
@@ -260,7 +226,6 @@ public class Cell {
             }
             case Sheep sheep -> {
                 if (entities.add(sheep)) {
-//                    allEntities.add(sheep);
                     countSheep++;
                     sheep.setI(i);
                     sheep.setJ(j);

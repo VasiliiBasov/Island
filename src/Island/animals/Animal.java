@@ -7,7 +7,7 @@ import Island.interfaces.Reproducable;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public abstract class Animal extends Entity implements CanToEat, Moveable, Reproducable{
+public abstract class Animal extends Entity implements CanToEat, Moveable, Reproducable {
     private int speed;
     private int i;
     private int j;

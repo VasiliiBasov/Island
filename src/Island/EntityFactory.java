@@ -25,7 +25,6 @@ public class EntityFactory {
     private int countRabbit;
     private int countSheep;
 
-    //public static CopyOnWriteArrayList<Entity> entities = new CopyOnWriteArrayList<>();
     public static HashSet<Entity> entities = new HashSet<>();
 
     public HashSet<Entity> entityFactory(int countTree, int countBear, int countEagle, int countFox, int countSnake, int countWolf, int countCaterpillar, int countCow, int countDeer, int countDuck, int countGoat, int countHamster, int countHorse, int countKangaroo, int countRabbit, int countSheep) {

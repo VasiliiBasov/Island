@@ -67,49 +67,23 @@ public class Wolf extends Predator {
 
     @Override
     public void move() {
-        int a = ThreadLocalRandom.current().nextInt(speed+1);
-        //double b = ThreadLocalRandom.current().nextDouble(0.0,4.0);
+        int a = ThreadLocalRandom.current().nextInt(speed + 1);
         int b = ThreadLocalRandom.current().nextInt(4);
         if (a != 0) {
             Field.field[getI()][getJ()].remove(this);
-//            switch (b) {
-//                case 0 : {
-//                    setI(getI() - a);
-//                    aa++;
-//                }
-//                case 1 : {
-//                    setJ(getJ() - a);
-//                    bb++;
-//                }
-//                case 2 : {
-//                    setI(getI() + a);
-//                    cc++;
-//                }
-//                case 3 : {
-//                    setJ(getJ() + a);
-//                    dd++;
-//                }
-//            }
             if (b == 0) {
-                    setI(getI() - a);
-                    aa++;
-                }
-                else if (b == 1){
-                    setJ(getJ() - a);
-                    bb++;
-                }
-                else if (b == 2){
-                    setI(getI() + a);
-                    cc++;
-                }
-                else if (b == 3){
-                    setJ(getJ() + a);
-                    dd++;
-                }
+                setI(getI() - a);
+            } else if (b == 1) {
+                setJ(getJ() - a);
+            } else if (b == 2) {
+                setI(getI() + a);
+            } else {
+                setJ(getJ() + a);
+            }
 
-            if (getI() >= Field.HEIGHT) setI(Field.HEIGHT-1);
+            if (getI() >= Field.HEIGHT) setI(Field.HEIGHT - 1);
             if (getI() < 0) setI(0);
-            if (getJ() >= Field.WIDTH) setJ(Field.WIDTH-1);
+            if (getJ() >= Field.WIDTH) setJ(Field.WIDTH - 1);
             if (getJ() < 0) setJ(0);
             Field.field[this.getI()][this.getJ()].add(this);
         }

@@ -1,0 +1,62 @@
+[1mdiff --git a/src/Island/Main.java b/src/Island/Main.java[m
+[1mindex ea5d9f0..9cf3d80 100644[m
+[1m--- a/src/Island/Main.java[m
+[1m+++ b/src/Island/Main.java[m
+[36m@@ -12,54 +12,27 @@[m [mpublic class Main {[m
+     public static ExecutorService executorService = Executors.newCachedThreadPool();[m
+     public static ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(100);[m
+     public static int step = 0;[m
+[31m-    //public static CopyOnWriteArrayList<Entity> entities = new CopyOnWriteArrayList<>();[m
+[31m-    //public static HashSet<Entity> entities = new HashSet<Entity>();[m
+[32m+[m
+     public static HashSet<Entity> entities = new HashSet<>();[m
+ [m
+ [m
+     public static void main(String[] args) throws InterruptedException {[m
+         System.out.println("start!");[m
+[31m-        //entities = new EntityFactory().entityFactory(3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);[m
+ [m
+         Field.start();[m
+         Field.distribute(new EntityFactory().entityFactory(10000, 1000, 3000, 3000, 4000, 2500, 10000, 1000, 3000, 8000, 4000, 9000, 2000, 3000, 6000, 4000));[m
+         Field.draw();[m
+         TimeUnit.SECONDS.sleep(2);[m
+[31m-//        scheduledExecutorService.scheduleAtFixedRate(new Runnable() {[m
+[31m-//            @Override[m
+[31m-//            public void run() {[m
+[31m-//                System.out.println(entities.size());[m
+[31m-//                System.out.println(Tree.count.get());[m
+[31m-//                System.out.println(Tree.count);[m
+[31m-//                //System.out.println("case 0: " + Wolf.aa + " case 1: " + Wolf.bb + " case 2: " + Wolf.cc + " case 3: " + Wolf.dd);[m
+[31m-//                for (Entity entity : Main.entities) {[m
+[31m-//                    if (entity != null) {[m
+[31m-//                        executorService.submit(entity);[m
+[31m-//                        //executorService.submit(entity);[m
+[31m-//                    }[m
+[31m-//                }[m
+[31m-//                Field.draw();[m
+[31m-//                step++;[m
+[31m-//            }[m
+[31m-//        },3, 3, TimeUnit.SECONDS);[m
+[32m+[m
+         while (step < 100) {[m
+[31m-            //System.out.println(Rabbit.count);[m
+             System.out.println(entities.size());[m
+             System.out.println(Tree.count.get());[m
+[31m-            //System.out.println("case 0: " + Wolf.aa + " case 1: " + Wolf.bb + " case 2: " + Wolf.cc + " case 3: " + Wolf.dd);[m
+             for (Entity entity : entities) {[m
+                 if (entity != null) {[m
+                     executorService.submit(entity);[m
+                 }[m
+             }[m
+[31m-//            for (int i = 0; i < Field.HEIGHT; i++) {[m
+[31m-//                for (int j = 0; j < Field.WIDTH; j++) {[m
+[31m-//                    Field.field[i][j].entities.stream()[m
+[31m-//                            .forEach(t -> {[m
+[31m-//                                executorService.submit(t);[m
+[31m-//                            });[m
+[31m-//                }[m
+[31m-//            }[m
+[32m+[m
+             Field.draw();[m
+             TimeUnit.MILLISECONDS.sleep(1000);[m
+             step++;[m

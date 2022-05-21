@@ -1,13 +1,9 @@
 package Island.plants;
 
 import Island.Entity;
-import Island.EntityFactory;
 import Island.Field;
-import Island.Main;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -22,7 +18,6 @@ public class Tree extends Plants {
     private final int breedingPow = 1;
     private final int seedRate = 3;
     private static final int maxPopulation = 3000;
-    public static HashSet<Entity> entities = new HashSet<>();
 
     public Tree() {
         count.incrementAndGet();
