@@ -8,22 +8,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Goat extends Herbivorous {
 
-    private double weight = 60.0;
-    private int maxPopulation = 140;
-    private int speed = 2;
-    private double amountOfFood = 10.0;
-    private int survivable = 5;
-    private int i;
-    private int j;
     public static AtomicInteger count = new AtomicInteger(0);
+    public static int maxPopulation = 140;
+
+    public Goat() {
+
+        setWeight(60.0);
+        setSpeed(2);
+        setAmountOfFood(10.0);
+        setSurvivable(5);
+
+        count.incrementAndGet();
+    }
 
 
     public void eat() {
 
-    }
-
-    public Goat() {
-        count.incrementAndGet();
     }
 
     @Override
@@ -65,78 +65,18 @@ public class Goat extends Herbivorous {
         }
     }
 
-    public double getWeight() {
-        return weight;
-    }
-
-    public int getMaxPopulation() {
-        return maxPopulation;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public double getAmountOfFood() {
-        return amountOfFood;
-    }
-
-    public int getSurvivable() {
-        return survivable;
-    }
-
-    @Override
-    public int getI() {
-        return i;
-    }
-
-    @Override
-    public int getJ() {
-        return j;
-    }
-
     @Override
     public void run() {
         System.out.print(isDead);
         if (!isDead)
-        move();
+            move();
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public static int getMaxPopulation() {
+        return maxPopulation;
     }
 
-    public void setMaxPopulation(int maxPopulation) {
-        this.maxPopulation = maxPopulation;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public void setAmountOfFood(double amountOfFood) {
-        this.amountOfFood = amountOfFood;
-    }
-
-    public void setSurvivable(int survivable) {
-        this.survivable = survivable;
-    }
-
-    @Override
-    public void setI(int i) {
-        this.i = i;
-    }
-
-    @Override
-    public void setJ(int j) {
-        this.j = j;
-    }
-
-    public boolean isIsdead() {
-        return isDead;
-    }
-
-    public void setIsdead(boolean isdead) {
-        this.isDead = isdead;
+    public static void setMaxPopulation(int maxPopulation) {
+        Goat.maxPopulation = maxPopulation;
     }
 }

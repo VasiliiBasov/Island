@@ -33,10 +33,9 @@ public interface CanToEat {
                     java.lang.reflect.Field field2 = null;
                     Method method = null;
                     try {
-                        field = clazz.getDeclaredField("weight");
+                        field = Entity.class.getField("weight");
                         field2 = clazz.getField("count");
                         method = clazz.getMethod("eaten");
-                        field.setAccessible(true);
                     } catch (NoSuchFieldException ex) {
                         ex.printStackTrace();
                     } catch (NoSuchMethodException ex) {

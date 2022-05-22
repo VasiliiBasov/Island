@@ -17,7 +17,7 @@ public class Wolf extends Predator {
     private int speed = 3;
     private final double amountOfFood = 8.0;
     private double amountOfFoodNow = 8.0;
-    private double survivable = 10;
+    private int survivable = 10;
     private int i;
     private int j;
     public static int count = 0;
@@ -60,7 +60,7 @@ public class Wolf extends Predator {
         return amountOfFood;
     }
 
-    public double getSurvivable() {
+    public int getSurvivable() {
         return survivable;
     }
 
