@@ -1,6 +1,7 @@
 package Island.animals.herbivorous;
 
 import Island.Field;
+import Island.Main;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -26,8 +27,8 @@ public class Goat extends Herbivorous {
     }
 
     @Override
-    public void eaten() {
-
+    public synchronized void eaten() {
+        isDead = true;
     }
 
     @Override
@@ -36,7 +37,7 @@ public class Goat extends Herbivorous {
     }
 
     @Override
-    public void move() {
+    public synchronized void move() {
         int y = getI();
         int x = getJ();
         int a = ThreadLocalRandom.current().nextInt(speed + 1);
@@ -96,6 +97,46 @@ public class Goat extends Herbivorous {
 
     @Override
     public void run() {
+        System.out.print(isDead);
+        if (!isDead)
         move();
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setMaxPopulation(int maxPopulation) {
+        this.maxPopulation = maxPopulation;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public void setAmountOfFood(double amountOfFood) {
+        this.amountOfFood = amountOfFood;
+    }
+
+    public void setSurvivable(int survivable) {
+        this.survivable = survivable;
+    }
+
+    @Override
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    @Override
+    public void setJ(int j) {
+        this.j = j;
+    }
+
+    public boolean isIsdead() {
+        return isDead;
+    }
+
+    public void setIsdead(boolean isdead) {
+        this.isDead = isdead;
     }
 }

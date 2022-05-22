@@ -3,8 +3,11 @@ package Island.interfaces;
 import Island.Entity;
 import Island.Field;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public interface CanToEat {
     default double eat(HashMap<Class<?>, Integer> chanceToEat, int i, int j) {
@@ -27,18 +30,32 @@ public interface CanToEat {
                 if (a < chanceToEat.get(e)) {
                     Class clazz = animal[0].getClass();
                     java.lang.reflect.Field field = null;
+                    java.lang.reflect.Field field2 = null;
+                    Method method = null;
                     try {
                         field = clazz.getDeclaredField("weight");
+                        field2 = clazz.getField("count");
+                        method = clazz.getMethod("eaten");
                         field.setAccessible(true);
                     } catch (NoSuchFieldException ex) {
+                        ex.printStackTrace();
+                    } catch (NoSuchMethodException ex) {
                         ex.printStackTrace();
                     }
                     try {
                         food = (double) field.get(animal[0]);
+                        AtomicInteger at = (AtomicInteger) field2.get(animal[0]);
+                        at.decrementAndGet();
+                        field2.set(animal[0], at);
+                        method.invoke(animal[0]);
                     } catch (IllegalAccessException ex) {
                         ex.printStackTrace();
+                    } catch (InvocationTargetException ex) {
+                        ex.printStackTrace();
                     }
+                    //Field.trash.add(animal[0]);
                     Field.field[i][j].remove(animal[0]);
+                    //animal[0].isDead = true;
                     return food;
                 }
             }

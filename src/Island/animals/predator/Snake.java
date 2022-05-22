@@ -3,6 +3,7 @@ package Island.animals.predator;
 import Island.Field;
 
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Snake extends Predator {
 
@@ -13,6 +14,8 @@ public class Snake extends Predator {
     private int survivable = 15;
     private int i;
     private int j;
+    private boolean isDead = false;
+    public static AtomicInteger count = new AtomicInteger(0);
 
     public void setI(int i) {
         this.i = i;
@@ -96,6 +99,9 @@ public class Snake extends Predator {
 
     @Override
     public void run() {
-        move();
+        if (!isDead)
+        eat();
+        if (!isDead)
+            move();
     }
 }

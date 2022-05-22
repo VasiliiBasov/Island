@@ -3,6 +3,7 @@ package Island.animals.herbivorous;
 import Island.Field;
 
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Rabbit extends Herbivorous {
 
@@ -13,10 +14,11 @@ public class Rabbit extends Herbivorous {
     private int survivable = 5;
     private int i;
     private int j;
-    public static int count = 0;
+    private boolean isDead = false;
+    public static AtomicInteger count = new AtomicInteger(0);
 
     public Rabbit() {
-        count++;
+        count.incrementAndGet();
     }
 
 
@@ -83,9 +85,44 @@ public class Rabbit extends Herbivorous {
         return survivable;
     }
 
+    public static int getCount() {
+        return count.get();
+    }
+
+    @Override
+    public void run() {
+        if (!isDead)
+            move();
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setMaxPopulation(int maxPopulation) {
+        this.maxPopulation = maxPopulation;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public void setAmountOfFood(double amountOfFood) {
+        this.amountOfFood = amountOfFood;
+    }
+
+    public void setSurvivable(int survivable) {
+        this.survivable = survivable;
+    }
+
     @Override
     public int getI() {
         return i;
+    }
+
+    @Override
+    public void setI(int i) {
+        this.i = i;
     }
 
     @Override
@@ -93,12 +130,8 @@ public class Rabbit extends Herbivorous {
         return j;
     }
 
-    public static int getCount() {
-        return count;
-    }
-
     @Override
-    public void run() {
-        move();
+    public void setJ(int j) {
+        this.j = j;
     }
 }

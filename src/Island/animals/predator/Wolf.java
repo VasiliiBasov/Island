@@ -1,6 +1,8 @@
 package Island.animals.predator;
 
+import Island.Entity;
 import Island.Field;
+import Island.Main;
 import Island.animals.herbivorous.*;
 
 import java.util.ArrayList;
@@ -18,7 +20,8 @@ public class Wolf extends Predator {
     private double survivable = 10;
     private int i;
     private int j;
-    public static AtomicInteger count = new AtomicInteger(0);
+    public static int count = 0;
+    private boolean isDead = false;
 
     public static final HashMap<Class<?>, Integer> chanceToEat = new HashMap<>();
     //public static final ArrayList<Class<?>> animalForEat = new ArrayList<>();
@@ -38,7 +41,7 @@ public class Wolf extends Predator {
     }
 
     public Wolf() {
-        count.incrementAndGet();
+        count++;
     }
 
     public double getWeight() {
@@ -77,27 +80,31 @@ public class Wolf extends Predator {
         this.j = j;
     }
 
-    public void eat() {
+    public synchronized void eat() {
         //System.out.println(amountOfFoodNow);
         if (amountOfFoodNow < amountOfFood) {
             amountOfFoodNow += super.eat(chanceToEat, i, j);
             if (amountOfFoodNow > amountOfFood) amountOfFoodNow = amountOfFood;
         }
-        if (amountOfFoodNow == 0) Field.field[i][j].entities.remove(this);
+        if (amountOfFoodNow == 0) {
+            eaten();
+            Wolf.count--;
+            //Field.trash.add(this);
+            Field.field[i][j].remove(this);
+            return;
+        }
 
         amountOfFoodNow -= amountOfFood/survivable;
         if (amountOfFoodNow < 0) amountOfFoodNow = 0;
     }
 
-
-
     @Override
-    public void eaten() {
-
+    public synchronized void eaten() {
+        isDead = true;
     }
 
     @Override
-    public void move() {
+    public synchronized void move() {
         int y = getI();
         int x = getJ();
         int a = ThreadLocalRandom.current().nextInt(speed + 1);
@@ -133,6 +140,8 @@ public class Wolf extends Predator {
     @Override
     public void run() {
         eat();
+        if (!isDead)
         move();
     }
+
 }

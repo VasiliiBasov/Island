@@ -11,6 +11,7 @@ public abstract class Animal extends Entity implements CanToEat, Moveable, Repro
     private int speed;
     private int i;
     private int j;
+    public boolean isDead = false;
 
     public int getI() {
         return i;

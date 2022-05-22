@@ -5,6 +5,7 @@ import Island.animals.herbivorous.*;
 import Island.plants.Tree;
 
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Cell {
     public String dominate;
@@ -30,7 +31,7 @@ public class Cell {
     public static int countCell = 0;
 
 
-    public HashSet<Entity> entities = new HashSet<>();
+    public CopyOnWriteArrayList<Entity> entities = new CopyOnWriteArrayList<>();
 
     public Cell() {
         countCell++;
@@ -60,8 +61,8 @@ public class Cell {
             }
             case Wolf w -> {
                 if (entities.remove(w)) {
+                    Field.trash.add(w);
                     countWolf--;
-                    Wolf.count.decrementAndGet();
                 }
             }
             case Caterpillar cat -> {
@@ -86,8 +87,8 @@ public class Cell {
             }
             case Goat goat -> {
                 if (entities.remove(goat)) {
+                    Field.trash.add(goat);
                     countGoat--;
-                    Goat.count.decrementAndGet();
                 }
             }
             case Hamster hamster -> {

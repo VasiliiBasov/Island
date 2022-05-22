@@ -3,6 +3,7 @@ package Island.animals.herbivorous;
 import Island.Field;
 
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Hamster extends Herbivorous {
 
@@ -13,6 +14,8 @@ public class Hamster extends Herbivorous {
     private int survivable = 2;
     private int i;
     private int j;
+    private boolean isDead = false;
+    public static AtomicInteger count = new AtomicInteger(0);
 
 
     public void eat() {
@@ -90,6 +93,37 @@ public class Hamster extends Herbivorous {
 
     @Override
     public void run() {
-        move();
+        if (!isDead)
+            move();
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void setMaxPopulation(int maxPopulation) {
+        this.maxPopulation = maxPopulation;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public void setAmountOfFood(double amountOfFood) {
+        this.amountOfFood = amountOfFood;
+    }
+
+    public void setSurvivable(int survivable) {
+        this.survivable = survivable;
+    }
+
+    @Override
+    public void setI(int i) {
+        this.i = i;
+    }
+
+    @Override
+    public void setJ(int j) {
+        this.j = j;
     }
 }

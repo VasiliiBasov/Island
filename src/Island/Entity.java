@@ -6,6 +6,7 @@ public abstract class Entity implements Eatable, Runnable {
 
     private int i;
     private int j;
+    public boolean isDead;
 
     @Override
     public void run() {
@@ -16,4 +17,5 @@ public abstract class Entity implements Eatable, Runnable {
     public void eaten() {
 
     }
+
 }
