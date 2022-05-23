@@ -61,7 +61,6 @@ public class Cell {
             }
             case Wolf w -> {
                 if (entities.remove(w)) {
-                    Field.trash.add(w);
                     countWolf--;
                 }
             }
@@ -87,7 +86,6 @@ public class Cell {
             }
             case Goat goat -> {
                 if (entities.remove(goat)) {
-                    Field.trash.add(goat);
                     countGoat--;
                 }
             }

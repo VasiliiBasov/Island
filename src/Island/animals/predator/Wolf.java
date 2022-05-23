@@ -81,7 +81,6 @@ public class Wolf extends Predator {
     }
 
     public synchronized void eat() {
-        //System.out.println(amountOfFoodNow);
         if (amountOfFoodNow < amountOfFood) {
             amountOfFoodNow += super.eat(chanceToEat, i, j);
             if (amountOfFoodNow > amountOfFood) amountOfFoodNow = amountOfFood;
@@ -89,7 +88,6 @@ public class Wolf extends Predator {
         if (amountOfFoodNow == 0) {
             eaten();
             Wolf.count--;
-            //Field.trash.add(this);
             Field.field[i][j].remove(this);
             return;
         }

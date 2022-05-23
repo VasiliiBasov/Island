@@ -17,10 +17,6 @@ public interface CanToEat {
 
         for (Class<?> e : chanceToEat.keySet()) {
 
-//            animal[0] = Field.field[i][j].entities
-//                    .stream()
-//                    .filter(e2 -> (e == e2.getClass()))
-//                    .findFirst().get();
             Field.field[i][j].entities.forEach(ent -> {
                 if (ent.getClass() == e) {
                     animal[0] = ent;
@@ -52,9 +48,7 @@ public interface CanToEat {
                     } catch (InvocationTargetException ex) {
                         ex.printStackTrace();
                     }
-                    //Field.trash.add(animal[0]);
                     Field.field[i][j].remove(animal[0]);
-                    //animal[0].isDead = true;
                     return food;
                 }
             }

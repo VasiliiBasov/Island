@@ -40,7 +40,8 @@ public class Main {
             TimeUnit.MILLISECONDS.sleep(500);
             step++;
         }
-        executorService.shutdownNow();
+        executorService.shutdown();
+
 
 
     }

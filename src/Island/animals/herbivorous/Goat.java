@@ -67,7 +67,6 @@ public class Goat extends Herbivorous {
 
     @Override
     public void run() {
-        System.out.print(isDead);
         if (!isDead)
             move();
     }
