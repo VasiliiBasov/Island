@@ -21,10 +21,6 @@ public class Cow extends Herbivorous {
         count.incrementAndGet();
     }
 
-    public void eat() {
-
-    }
-
     @Override
     public synchronized void eaten() {
         if (!isDead)

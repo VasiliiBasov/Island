@@ -4,6 +4,7 @@ import Island.Field;
 import Island.animals.herbivorous.*;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -12,7 +13,7 @@ public class Wolf extends Predator {
     private static final int maxPopulation = 30;
     public static AtomicInteger count = new AtomicInteger(0);
 
-    public static final HashMap<Class<?>, Integer> chanceToEat = new HashMap<>();
+    public static final LinkedHashMap<Class<?>, Integer> chanceToEat = new LinkedHashMap<>();
 
     static {
         chanceToEat.put(Sheep.class, 70);
@@ -84,7 +85,6 @@ public class Wolf extends Predator {
     @Override
     public void run() {
         eat(chanceToEat);
-        if (!isDead)
         move();
     }
 

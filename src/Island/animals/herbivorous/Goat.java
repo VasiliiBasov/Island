@@ -1,7 +1,6 @@
 package Island.animals.herbivorous;
 
 import Island.Field;
-import Island.Main;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -9,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Goat extends Herbivorous {
 
     public static AtomicInteger count = new AtomicInteger(0);
-    private static int maxPopulation = 140;
+    private static final int maxPopulation = 140;
 
     public Goat() {
 
@@ -20,11 +19,6 @@ public class Goat extends Herbivorous {
         setSurvivable(5);
 
         count.incrementAndGet();
-    }
-
-
-    public void eat() {
-
     }
 
     @Override

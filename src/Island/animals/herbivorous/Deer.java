@@ -21,10 +21,6 @@ public class Deer extends Herbivorous {
         count.incrementAndGet();
     }
 
-    public void eat() {
-
-    }
-
     @Override
     public void eaten() {
         if (!isDead)

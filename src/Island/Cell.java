@@ -186,6 +186,7 @@ public class Cell {
                     cow.setI(i);
                     cow.setJ(j);
                 }
+                else Cow.count.decrementAndGet();
             }
             case Deer deer -> {
                 if (countDeer < deer.getMaxPopulation()) {

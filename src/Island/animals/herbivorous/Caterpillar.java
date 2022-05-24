@@ -7,23 +7,26 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Caterpillar extends Herbivorous {
 
-    private double weight = 0.01;
-    private int maxPopulation = 1000;
-    private int speed = 1;
-    private double amountOfFood = 0.0025;
-    private int survivable = 2;
-    private int i;
-    private int j;
-    private boolean isDead = false;
     public static AtomicInteger count = new AtomicInteger(0);
+    private static final int maxPopulation = 1000;
 
-    public void eat() {
+    public Caterpillar() {
 
+        setWeight(0.01);
+        setSpeed(1);
+        setAmountOfFood(0.0025);
+        setAmountOfFoodNow(0.0025);
+        setSurvivable(2);
+
+        count.incrementAndGet();
     }
 
     @Override
-    public void eaten() {
-
+    public synchronized void eaten() {
+        if (!isDead)
+            count.decrementAndGet();
+        isDead = true;
+        Field.field[i][j].remove(this);
     }
 
     @Override
@@ -32,14 +35,7 @@ public class Caterpillar extends Herbivorous {
     }
 
     @Override
-    public void run() {
-        if (!isDead)
-            move();
-
-    }
-
-    @Override
-    public void move() {
+    public synchronized void move() {
         int y = getI();
         int x = getJ();
         int a = ThreadLocalRandom.current().nextInt(speed + 1);
@@ -61,69 +57,20 @@ public class Caterpillar extends Herbivorous {
             if (x >= Field.WIDTH) x = Field.WIDTH - 1;
             if (x < 0) x = 0;
             if (Field.field[y][x].getCountCaterpillar() < maxPopulation) {
-                Field.field[getI()][getJ()].remove(this);
-                Field.field[y][x].add(this);
+                if (!isDead) {
+                    Field.field[getI()][getJ()].remove(this);
+                    Field.field[y][x].add(this);
+                }
             }
         }
     }
 
-    public double getWeight() {
-        return weight;
+    @Override
+    public void run() {
+        move();
     }
 
     public int getMaxPopulation() {
         return maxPopulation;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public double getAmountOfFood() {
-        return amountOfFood;
-    }
-
-    public int getSurvivable() {
-        return survivable;
-    }
-
-    @Override
-    public int getI() {
-        return i;
-    }
-
-    @Override
-    public int getJ() {
-        return j;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public void setMaxPopulation(int maxPopulation) {
-        this.maxPopulation = maxPopulation;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public void setAmountOfFood(double amountOfFood) {
-        this.amountOfFood = amountOfFood;
-    }
-
-    public void setSurvivable(int survivable) {
-        this.survivable = survivable;
-    }
-
-    @Override
-    public void setI(int i) {
-        this.i = i;
-    }
-
-    @Override
-    public void setJ(int j) {
-        this.j = j;
     }
 }
