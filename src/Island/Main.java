@@ -20,7 +20,7 @@ public class Main {
         System.out.println("start!");
         Field.start();
         //Field.distribute(new EntityFactory().entityFactory(100, 100, 300, 300, 200, 200, 10000, 100, 300, 800, 400, 2000, 200, 300, 600, 400));
-        Field.distribute(new EntityFactory().entityFactory(100000, 0, 0, 0, 0, 100, 20000, 100, 100, 100, 100, 1000, 100, 100, 1000, 100));
+        Field.distribute(new EntityFactory().entityFactory(1000, 0, 0, 0, 0, 100, 20000, 100, 100, 100, 100, 1000, 100, 100, 1000, 100));
         TimeUnit.SECONDS.sleep(2);
 
 

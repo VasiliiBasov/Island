@@ -2,6 +2,7 @@ package Island.interfaces;
 
 import Island.Entity;
 import Island.Field;
+import Island.plants.Plants;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -9,7 +10,7 @@ import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 public interface CanToEat {
-    default double eat(HashMap<Class<?>, Integer> chanceToEat, int i, int j) {
+    default double eat(HashMap<Class<?>, Integer> chanceToEat, int i, int j, double amount) {
         int a = ThreadLocalRandom.current().nextInt(100);
         final Entity[] animal = new Entity[1];
         double food = 0.0;
@@ -40,7 +41,8 @@ public interface CanToEat {
                 assert field != null;
                 food = (double) field.get(animal[0]);
                 assert method != null;
-                method.invoke(animal[0]);
+                if (animal[0].getClass().getSuperclass() == Plants.class && food > amount*5) field.set(animal[0], food - amount);
+                else method.invoke(animal[0]);
             } catch (IllegalAccessException | InvocationTargetException ex) {
                 ex.printStackTrace();
             }

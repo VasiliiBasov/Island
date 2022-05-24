@@ -2,6 +2,7 @@ package Island.plants;
 
 import Island.Field;
 
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Tree extends Plants {
@@ -11,7 +12,7 @@ public class Tree extends Plants {
 
     public Tree() {
 
-        setWeight(1.0);
+        setWeight(ThreadLocalRandom.current().nextDouble(1.0, 100.0));
         setBreedingPow(2);
         setFlowering(new AtomicInteger(2));
         setSeedRate(6);

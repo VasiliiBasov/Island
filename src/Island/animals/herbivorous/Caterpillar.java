@@ -20,10 +20,10 @@ public class Caterpillar extends Herbivorous {
 
     public Caterpillar() {
 
-        setWeight(0.01);
+        setWeight(0.03);
         setSpeed(1);
-        setAmountOfFood(0.0025);
-        setAmountOfFoodNow(0.0025);
+        setAmountOfFood(0.01);
+        setAmountOfFoodNow(0.01);
         setSurvivable(2);
 
         count.incrementAndGet();

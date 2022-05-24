@@ -16,7 +16,7 @@ public abstract class Animal extends Entity implements CanToEat, Moveable, Repro
 
     public synchronized void eat(HashMap<Class<?>, Integer> chanceToEat) {
         if (amountOfFoodNow < amountOfFood) {
-            amountOfFoodNow += CanToEat.super.eat(chanceToEat, i, j);
+            amountOfFoodNow += CanToEat.super.eat(chanceToEat, i, j, amountOfFood - amountOfFoodNow);
             if (amountOfFoodNow > amountOfFood) amountOfFoodNow = amountOfFood;
         }
         if (amountOfFoodNow == 0) {

@@ -14,8 +14,8 @@ public class Hamster extends Herbivorous {
     public static final LinkedHashMap<Class<?>, Integer> chanceToEat = new LinkedHashMap<>();
 
     static {
+        chanceToEat.put(Caterpillar.class, 100);
         chanceToEat.put(Tree.class, 100);
-        chanceToEat.put(Caterpillar.class, 80);
     }
 
     public Hamster() {
