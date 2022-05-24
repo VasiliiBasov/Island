@@ -9,13 +9,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Goat extends Herbivorous {
 
     public static AtomicInteger count = new AtomicInteger(0);
-    public static int maxPopulation = 140;
+    private static int maxPopulation = 140;
 
     public Goat() {
 
         setWeight(60.0);
         setSpeed(2);
         setAmountOfFood(10.0);
+        setAmountOfFoodNow(10.0);
         setSurvivable(5);
 
         count.incrementAndGet();
@@ -28,7 +29,10 @@ public class Goat extends Herbivorous {
 
     @Override
     public synchronized void eaten() {
+        if (!isDead)
+        count.decrementAndGet();
         isDead = true;
+        Field.field[i][j].remove(this);
     }
 
     @Override
@@ -59,15 +63,16 @@ public class Goat extends Herbivorous {
             if (x >= Field.WIDTH) x = Field.WIDTH - 1;
             if (x < 0) x = 0;
             if (Field.field[y][x].getCountGoat() < maxPopulation) {
-                Field.field[getI()][getJ()].remove(this);
-                Field.field[y][x].add(this);
+                if (!isDead) {
+                    Field.field[getI()][getJ()].remove(this);
+                    Field.field[y][x].add(this);
+                }
             }
         }
     }
 
     @Override
     public void run() {
-        if (!isDead)
             move();
     }
 
@@ -75,7 +80,4 @@ public class Goat extends Herbivorous {
         return maxPopulation;
     }
 
-    public static void setMaxPopulation(int maxPopulation) {
-        Goat.maxPopulation = maxPopulation;
-    }
 }

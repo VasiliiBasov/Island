@@ -7,15 +7,19 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Deer extends Herbivorous {
 
-    private double weight = 300.0;
-    private int maxPopulation = 20;
-    private int speed = 3;
-    private double amountOfFood = 50.0;
-    private int survivable = 8;
-    private int i;
-    private int j;
-    private boolean isDead = false;
     public static AtomicInteger count = new AtomicInteger(0);
+    private static final int maxPopulation = 20;
+
+    public Deer() {
+
+        setWeight(300.0);
+        setSpeed(3);
+        setAmountOfFood(50.0);
+        setAmountOfFoodNow(50.0);
+        setSurvivable(8);
+
+        count.incrementAndGet();
+    }
 
     public void eat() {
 
@@ -23,7 +27,10 @@ public class Deer extends Herbivorous {
 
     @Override
     public void eaten() {
-
+        if (!isDead)
+            count.decrementAndGet();
+        isDead = true;
+        Field.field[i][j].remove(this);
     }
 
     @Override
@@ -32,7 +39,7 @@ public class Deer extends Herbivorous {
     }
 
     @Override
-    public void move() {
+    public synchronized void move() {
         int y = getI();
         int x = getJ();
         int a = ThreadLocalRandom.current().nextInt(speed + 1);
@@ -54,75 +61,20 @@ public class Deer extends Herbivorous {
             if (x >= Field.WIDTH) x = Field.WIDTH - 1;
             if (x < 0) x = 0;
             if (Field.field[y][x].getCountDeer() < maxPopulation) {
-                Field.field[getI()][getJ()].remove(this);
-                Field.field[y][x].add(this);
+                if (!isDead) {
+                    Field.field[getI()][getJ()].remove(this);
+                    Field.field[y][x].add(this);
+                }
             }
         }
     }
 
-    public double getWeight() {
-        return weight;
+    @Override
+    public void run() {
+            move();
     }
 
     public int getMaxPopulation() {
         return maxPopulation;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public double getAmountOfFood() {
-        return amountOfFood;
-    }
-
-    public int getSurvivable() {
-        return survivable;
-    }
-
-    @Override
-    public int getI() {
-        return i;
-    }
-
-    @Override
-    public int getJ() {
-        return j;
-    }
-
-    @Override
-    public void run() {
-        if (!isDead)
-            move();
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public void setMaxPopulation(int maxPopulation) {
-        this.maxPopulation = maxPopulation;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public void setAmountOfFood(double amountOfFood) {
-        this.amountOfFood = amountOfFood;
-    }
-
-    public void setSurvivable(int survivable) {
-        this.survivable = survivable;
-    }
-
-    @Override
-    public void setI(int i) {
-        this.i = i;
-    }
-
-    @Override
-    public void setJ(int j) {
-        this.j = j;
     }
 }
