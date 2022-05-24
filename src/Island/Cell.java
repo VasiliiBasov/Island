@@ -123,7 +123,7 @@ public class Cell {
     public synchronized void add(Object entity) {
         switch (entity) {
             case Tree t -> {
-                if (countTree < t.getMaxPopulation()) {
+                if (countTree < Tree.getMaxPopulation()) {
                     entities.add(t);
                     countTree++;
                     t.setI(i);
@@ -164,12 +164,13 @@ public class Cell {
                 }
             }
             case Wolf w -> {
-                if (countWolf < w.getMaxPopulation()) {
+                if (countWolf < Wolf.getMaxPopulation()) {
                     entities.add(w);
                     countWolf++;
                     w.setI(i);
                     w.setJ(j);
                 }
+                else Wolf.count.decrementAndGet();
             }
             case Caterpillar caterpillar -> {
                 if (countCaterpillar < caterpillar.getMaxPopulation()) {
@@ -178,6 +179,7 @@ public class Cell {
                     caterpillar.setI(i);
                     caterpillar.setJ(j);
                 }
+                else Caterpillar.count.decrementAndGet();
             }
             case Cow cow -> {
                 if (countCow < cow.getMaxPopulation()) {
@@ -195,6 +197,7 @@ public class Cell {
                     deer.setI(i);
                     deer.setJ(j);
                 }
+                else Deer.count.decrementAndGet();
             }
             case Duck duck -> {
                 if (countDuck < duck.getMaxPopulation()) {
@@ -203,14 +206,16 @@ public class Cell {
                     duck.setI(i);
                     duck.setJ(j);
                 }
+                else Duck.count.decrementAndGet();
             }
             case Goat goat -> {
-                if (countGoat < goat.getMaxPopulation()) {
+                if (countGoat < Goat.getMaxPopulation()) {
                     entities.add(goat);
                     countGoat++;
                     goat.setI(i);
                     goat.setJ(j);
                 }
+                else Goat.count.decrementAndGet();
             }
             case Hamster hamster -> {
                 if (countHamster < hamster.getMaxPopulation()) {
@@ -219,6 +224,7 @@ public class Cell {
                     hamster.setI(i);
                     hamster.setJ(j);
                 }
+                else Hamster.count.decrementAndGet();
             }
             case Horse horse -> {
                 if (countHorse < horse.getMaxPopulation()) {
@@ -227,6 +233,7 @@ public class Cell {
                     horse.setI(i);
                     horse.setJ(j);
                 }
+                else Horse.count.decrementAndGet();
             }
             case Kangaroo kangaroo -> {
                 if (countKangaroo < kangaroo.getMaxPopulation()) {
@@ -235,6 +242,7 @@ public class Cell {
                     kangaroo.setI(i);
                     kangaroo.setJ(j);
                 }
+                else Kangaroo.count.decrementAndGet();
             }
             case Rabbit rabbit -> {
                 if (countRabbit < rabbit.getMaxPopulation()) {
@@ -243,6 +251,7 @@ public class Cell {
                     rabbit.setI(i);
                     rabbit.setJ(j);
                 }
+                else Rabbit.count.decrementAndGet();
             }
             case Sheep sheep -> {
                 if (countSheep < sheep.getMaxPopulation()) {
@@ -251,6 +260,7 @@ public class Cell {
                     sheep.setI(i);
                     sheep.setJ(j);
                 }
+                else Sheep.count.decrementAndGet();
             }
             default -> throw new IllegalStateException("Unexpected value: " + entity);
         }

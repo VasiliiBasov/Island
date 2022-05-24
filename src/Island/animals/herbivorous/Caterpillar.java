@@ -1,7 +1,9 @@
 package Island.animals.herbivorous;
 
 import Island.Field;
+import Island.plants.Tree;
 
+import java.util.LinkedHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -9,6 +11,12 @@ public class Caterpillar extends Herbivorous {
 
     public static AtomicInteger count = new AtomicInteger(0);
     private static final int maxPopulation = 1000;
+
+    public static final LinkedHashMap<Class<?>, Integer> chanceToEat = new LinkedHashMap<>();
+
+    static {
+        chanceToEat.put(Tree.class, 100);
+    }
 
     public Caterpillar() {
 
@@ -67,6 +75,7 @@ public class Caterpillar extends Herbivorous {
 
     @Override
     public void run() {
+        eat(chanceToEat);
         move();
     }
 

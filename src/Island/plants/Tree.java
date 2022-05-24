@@ -1,5 +1,7 @@
 package Island.plants;
 
+import Island.Field;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Tree extends Plants {
@@ -23,8 +25,11 @@ public class Tree extends Plants {
     }
 
     @Override
-    public void eaten() {
-
+    public synchronized void eaten() {
+        if (!isDead)
+            count.decrementAndGet();
+        isDead = true;
+        Field.field[i][j].remove(this);
     }
 
     @Override
