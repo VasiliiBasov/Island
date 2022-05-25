@@ -14,7 +14,7 @@ public class Duck extends Herbivorous {
     public static final LinkedHashMap<Class<?>, Integer> chanceToEat = new LinkedHashMap<>();
 
     static {
-        chanceToEat.put(Caterpillar.class, 100);
+        chanceToEat.put(Caterpillar.class, 70);
         chanceToEat.put(Tree.class, 100);
     }
 
@@ -25,6 +25,7 @@ public class Duck extends Herbivorous {
         setAmountOfFood(0.15);
         setAmountOfFoodNow(0.15);
         setSurvivable(4);
+        setAmountOfChild(2);
 
         count.incrementAndGet();
     }
@@ -35,11 +36,6 @@ public class Duck extends Herbivorous {
             count.decrementAndGet();
         isDead = true;
         Field.field[i][j].remove(this);
-    }
-
-    @Override
-    public void reproduce() {
-
     }
 
     @Override

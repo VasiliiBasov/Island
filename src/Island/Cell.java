@@ -130,38 +130,43 @@ public class Cell {
                     t.setJ(j);
 
                 }
+                else Tree.count.decrementAndGet();
             }
             case Bear b -> {
-                if (countBear < b.getMaxPopulation()) {
+                if (countBear < Bear.getMaxPopulation()) {
                     entities.add(b);
                     countBear++;
                     b.setI(i);
                     b.setJ(j);
                 }
+                else Bear.count.decrementAndGet();
             }
             case Eagle e -> {
-                if (countEagle < e.getMaxPopulation()) {
+                if (countEagle < Eagle.getMaxPopulation()) {
                     entities.add(e);
                     countEagle++;
                     e.setI(i);
                     e.setJ(j);
                 }
+                else Eagle.count.decrementAndGet();
             }
             case Fox f -> {
-                if (countFox < f.getMaxPopulation()) {
+                if (countFox < Fox.getMaxPopulation()) {
                     entities.add(f);
                     countFox++;
                     f.setI(i);
                     f.setJ(j);
                 }
+                else Fox.count.decrementAndGet();
             }
             case Snake s -> {
-                if (countSnake < s.getMaxPopulation()) {
+                if (countSnake < Snake.getMaxPopulation()) {
                     entities.add(s);
                     countSnake++;
                     s.setI(i);
                     s.setJ(j);
                 }
+                else Snake.count.decrementAndGet();
             }
             case Wolf w -> {
                 if (countWolf < Wolf.getMaxPopulation()) {

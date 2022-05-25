@@ -23,7 +23,8 @@ public class Deer extends Herbivorous {
         setSpeed(3);
         setAmountOfFood(50.0);
         setAmountOfFoodNow(50.0);
-        setSurvivable(8);
+        setSurvivable(80);
+        setAmountOfChild(2);
 
         count.incrementAndGet();
     }
@@ -34,11 +35,6 @@ public class Deer extends Herbivorous {
             count.decrementAndGet();
         isDead = true;
         Field.field[i][j].remove(this);
-    }
-
-    @Override
-    public void reproduce() {
-
     }
 
     @Override

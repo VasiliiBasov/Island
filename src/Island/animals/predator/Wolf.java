@@ -18,7 +18,7 @@ public class Wolf extends Predator {
     static {
         chanceToEat.put(Sheep.class, 70);
         chanceToEat.put(Goat.class, 60);
-        chanceToEat.put(Rabbit.class, 60);
+        chanceToEat.put(Rabbit.class, 80);
         chanceToEat.put(Deer.class, 15);
         chanceToEat.put(Kangaroo.class, 15);
         chanceToEat.put(Cow.class, 10);
@@ -34,6 +34,7 @@ public class Wolf extends Predator {
         setAmountOfFood(8.0);
         setSurvivable(10);
         setAmountOfFoodNow(8.0);
+        setAmountOfChild(1);
 
         count.incrementAndGet();
     }
@@ -75,11 +76,6 @@ public class Wolf extends Predator {
                 }
             }
         }
-    }
-
-    @Override
-    public void reproduce() {
-
     }
 
     @Override

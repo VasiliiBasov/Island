@@ -14,17 +14,18 @@ public class Hamster extends Herbivorous {
     public static final LinkedHashMap<Class<?>, Integer> chanceToEat = new LinkedHashMap<>();
 
     static {
-        chanceToEat.put(Caterpillar.class, 100);
+        chanceToEat.put(Caterpillar.class, 90);
         chanceToEat.put(Tree.class, 100);
     }
 
     public Hamster() {
 
-        setWeight(0.05);
+        setWeight(0.25);
         setSpeed(1);
-        setAmountOfFood(0.01);
-        setAmountOfFoodNow(0.01);
+        setAmountOfFood(0.3);
+        setAmountOfFoodNow(0.3);
         setSurvivable(2);
+        setAmountOfChild(1);
 
         count.incrementAndGet();
     }
@@ -35,11 +36,6 @@ public class Hamster extends Herbivorous {
             count.decrementAndGet();
         isDead = true;
         Field.field[i][j].remove(this);
-    }
-
-    @Override
-    public void reproduce() {
-
     }
 
     @Override

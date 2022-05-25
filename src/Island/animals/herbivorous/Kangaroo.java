@@ -23,7 +23,8 @@ public class Kangaroo extends Herbivorous {
         setSpeed(2);
         setAmountOfFood(7.0);
         setAmountOfFoodNow(7.0);
-        setSurvivable(5);
+        setSurvivable(6);
+        setAmountOfChild(1);
 
         count.incrementAndGet();
     }
@@ -34,11 +35,6 @@ public class Kangaroo extends Herbivorous {
             count.decrementAndGet();
         isDead = true;
         Field.field[i][j].remove(this);
-    }
-
-    @Override
-    public void reproduce() {
-
     }
 
     @Override

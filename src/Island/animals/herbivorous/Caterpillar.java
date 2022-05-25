@@ -20,11 +20,12 @@ public class Caterpillar extends Herbivorous {
 
     public Caterpillar() {
 
-        setWeight(0.03);
+        setWeight(0.1);
         setSpeed(1);
-        setAmountOfFood(0.01);
-        setAmountOfFoodNow(0.01);
+        setAmountOfFood(0.08);
+        setAmountOfFoodNow(0.08);
         setSurvivable(2);
+        setAmountOfChild(1);
 
         count.incrementAndGet();
     }
@@ -35,11 +36,6 @@ public class Caterpillar extends Herbivorous {
             count.decrementAndGet();
         isDead = true;
         Field.field[i][j].remove(this);
-    }
-
-    @Override
-    public void reproduce() {
-
     }
 
     @Override

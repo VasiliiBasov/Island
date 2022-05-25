@@ -24,6 +24,7 @@ public class Horse extends Herbivorous {
         setAmountOfFood(60.0);
         setAmountOfFoodNow(60.0);
         setSurvivable(9);
+        setAmountOfChild(1);
 
         count.incrementAndGet();
     }
@@ -34,11 +35,6 @@ public class Horse extends Herbivorous {
             count.decrementAndGet();
         isDead = true;
         Field.field[i][j].remove(this);
-    }
-
-    @Override
-    public void reproduce() {
-
     }
 
     @Override

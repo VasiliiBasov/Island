@@ -1,75 +1,47 @@
 package Island.animals.predator;
 
 import Island.Field;
+import Island.animals.herbivorous.*;
 
+import java.util.LinkedHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Snake extends Predator {
 
-    private double weight = 15.0;
-    private int maxPopulation = 3;
-    private int speed = 1;
-    private double amountOfFood = 3.0;
-    private int survivable = 15;
-    private int i;
-    private int j;
-    private boolean isDead = false;
+    private static final int maxPopulation = 30;
     public static AtomicInteger count = new AtomicInteger(0);
+    public static final LinkedHashMap<Class<?>, Integer> chanceToEat = new LinkedHashMap<>();
 
-    public void setI(int i) {
-        this.i = i;
+    static {
+        chanceToEat.put(Fox.class, 15);
+        chanceToEat.put(Rabbit.class, 20);
+        chanceToEat.put(Duck.class, 10);
+        chanceToEat.put(Hamster.class, 40);
     }
 
-    public void setJ(int j) {
-        this.j = j;
-    }
+    public Snake() {
 
-    public double getWeight() {
-        return weight;
-    }
+        setWeight(15.0);
+        setSpeed(1);
+        setAmountOfFood(1.5);
+        setSurvivable(15);
+        setAmountOfFoodNow(1.5);
+        setAmountOfChild(4);
 
-    public int getMaxPopulation() {
-        return maxPopulation;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public double getAmountOfFood() {
-        return amountOfFood;
-    }
-
-    public int getSurvivable() {
-        return survivable;
-    }
-
-    public int getI() {
-        return i;
-    }
-
-    public int getJ() {
-        return j;
-    }
-
-
-    public void eat() {
-
+        count.incrementAndGet();
     }
 
     @Override
-    public void eaten() {
-
+    public synchronized void eaten() {
+        if (!isDead)
+            count.decrementAndGet();
+        isDead = true;
+        Field.field[i][j].remove(this);
     }
 
     @Override
-    public void reproduce() {
-
-    }
-
-    @Override
-    public void move() {
+    public synchronized void move() {
         int y = getI();
         int x = getJ();
         int a = ThreadLocalRandom.current().nextInt(speed + 1);
@@ -91,17 +63,22 @@ public class Snake extends Predator {
             if (x >= Field.WIDTH) x = Field.WIDTH - 1;
             if (x < 0) x = 0;
             if (Field.field[y][x].getCountSnake() < maxPopulation) {
-                Field.field[getI()][getJ()].remove(this);
-                Field.field[y][x].add(this);
+                if (!isDead) {
+                    Field.field[getI()][getJ()].remove(this);
+                    Field.field[y][x].add(this);
+                }
             }
         }
     }
 
     @Override
     public void run() {
-        if (!isDead)
-        eat();
-        if (!isDead)
-            move();
+        eat(chanceToEat);
+        move();
     }
+
+    public static int getMaxPopulation() {
+        return maxPopulation;
+    }
+
 }

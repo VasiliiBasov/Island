@@ -21,9 +21,10 @@ public class Cow extends Herbivorous {
 
         setWeight(700.0);
         setSpeed(2);
-        setAmountOfFood(100.0);
-        setAmountOfFoodNow(100.0);
-        setSurvivable(4);
+        setAmountOfFood(80.0);
+        setAmountOfFoodNow(80.0);
+        setSurvivable(8);
+        setAmountOfChild(5);
 
         count.incrementAndGet();
     }
@@ -34,11 +35,6 @@ public class Cow extends Herbivorous {
             count.decrementAndGet();
         isDead = true;
         Field.field[i][j].remove(this);
-    }
-
-    @Override
-    public void reproduce() {
-
     }
 
     @Override

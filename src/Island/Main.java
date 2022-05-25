@@ -1,7 +1,7 @@
 package Island;
 
 import Island.animals.herbivorous.*;
-import Island.animals.predator.Wolf;
+import Island.animals.predator.*;
 import Island.plants.Tree;
 
 import java.util.*;
@@ -10,7 +10,6 @@ import java.util.concurrent.*;
 public class Main {
 
     public static ExecutorService executorService = Executors.newCachedThreadPool();
-    //public static ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(100);
     public static int step = 0;
 
     public static HashSet<Entity> entities = new HashSet<>();
@@ -19,29 +18,21 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("start!");
         Field.start();
-        //Field.distribute(new EntityFactory().entityFactory(100, 100, 300, 300, 200, 200, 10000, 100, 300, 800, 400, 2000, 200, 300, 600, 400));
-        Field.distribute(new EntityFactory().entityFactory(1000, 0, 0, 0, 0, 100, 20000, 100, 100, 100, 100, 1000, 100, 100, 1000, 100));
+        Field.distribute(new EntityFactory().entityFactory(1000, 19, 30, 50, 40, 40, 700, 27, 30, 80, 40, 400, 200, 30, 60, 40));
+        //Field.distribute(new EntityFactory().entityFactory(1000, 30, 0, 0, 0, 0, 10000, 0, 0, 0, 0, 1000, 0, 0, 0, 0));
         TimeUnit.SECONDS.sleep(2);
 
 
         while (step < 100) {
             executorService = Executors.newCachedThreadPool();
-            System.out.print("Волки: " + Wolf.count);
-            System.out.print(" Козы: " + Goat.count.get());
-            System.out.print(" Коровы: " + Cow.count.get());
-            System.out.print(" Утки: " + Duck.count.get());
-            System.out.print(" Олени: " + Deer.count.get());
-            System.out.print(" Гусеницы: " + Caterpillar.count.get());
-            System.out.print(" Хомяки: " + Hamster.count.get());
-            System.out.print(" Деревья: " + Tree.count.get());
-            System.out.println(" Количество существ: " + entities.size());
             for (Entity entity : entities) {
                 if (entity != null) {
                     executorService.submit(entity);
                 }
             }
-
             Field.draw();
+            Field.print();
+
             TimeUnit.MILLISECONDS.sleep(1000);
             step++;
         }

@@ -24,6 +24,7 @@ public class Goat extends Herbivorous {
         setAmountOfFood(10.0);
         setAmountOfFoodNow(10.0);
         setSurvivable(5);
+        setAmountOfChild(2);
 
         count.incrementAndGet();
     }
@@ -34,11 +35,6 @@ public class Goat extends Herbivorous {
         count.decrementAndGet();
         isDead = true;
         Field.field[i][j].remove(this);
-    }
-
-    @Override
-    public void reproduce() {
-
     }
 
     @Override

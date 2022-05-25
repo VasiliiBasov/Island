@@ -24,6 +24,7 @@ public class Rabbit extends Herbivorous {
         setAmountOfFood(0.45);
         setAmountOfFoodNow(0.45);
         setSurvivable(5);
+        setAmountOfChild(2);
 
         count.incrementAndGet();
     }
@@ -34,11 +35,6 @@ public class Rabbit extends Herbivorous {
             count.decrementAndGet();
         isDead = true;
         Field.field[i][j].remove(this);
-    }
-
-    @Override
-    public void reproduce() {
-
     }
 
     @Override
