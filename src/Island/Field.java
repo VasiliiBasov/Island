@@ -74,6 +74,7 @@ public class Field {
             int j = new Random().nextInt(WIDTH);
             field[i][j].add(entity);
             Main.entities.addAll(field[i][j].entities);
+
         }
     }
 
