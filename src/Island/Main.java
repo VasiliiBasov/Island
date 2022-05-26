@@ -18,7 +18,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("start!");
         Field.start();
-        Field.distribute(new EntityFactory().entityFactory(1000, 19, 30, 50, 40, 40, 700, 27, 30, 80, 40, 400, 200, 30, 60, 40));
+        Field.distribute(new EntityFactory().entityFactory(10000, 19, 30, 50, 40, 40, 700, 27, 30, 80, 40, 400, 200, 30, 60, 40));
         //Field.distribute(new EntityFactory().entityFactory(1000, 30, 0, 0, 0, 0, 10000, 0, 0, 0, 0, 1000, 0, 0, 0, 0));
         TimeUnit.SECONDS.sleep(2);
 

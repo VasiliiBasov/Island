@@ -1,6 +1,7 @@
 package Island.animals.predator;
 
 import Island.Field;
+import Island.animals.Animal;
 import Island.animals.herbivorous.Duck;
 import Island.animals.herbivorous.Hamster;
 import Island.animals.herbivorous.Rabbit;
@@ -9,7 +10,7 @@ import java.util.LinkedHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Fox extends Predator {
+public class Fox extends Animal {
 
     private static final int maxPopulation = 30;
     public static AtomicInteger count = new AtomicInteger(0);

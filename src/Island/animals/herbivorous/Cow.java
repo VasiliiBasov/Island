@@ -1,13 +1,14 @@
 package Island.animals.herbivorous;
 
 import Island.Field;
+import Island.animals.Animal;
 import Island.plants.Tree;
 
 import java.util.LinkedHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Cow extends Herbivorous {
+public class Cow extends Animal {
 
     public static AtomicInteger count = new AtomicInteger(0);
     private static final int maxPopulation = 10;
@@ -24,7 +25,7 @@ public class Cow extends Herbivorous {
         setAmountOfFood(80.0);
         setAmountOfFoodNow(80.0);
         setSurvivable(8);
-        setAmountOfChild(5);
+        setAmountOfChild(3);
 
         count.incrementAndGet();
     }

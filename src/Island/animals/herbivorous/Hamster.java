@@ -1,20 +1,21 @@
 package Island.animals.herbivorous;
 
 import Island.Field;
+import Island.animals.Animal;
 import Island.plants.Tree;
 
 import java.util.LinkedHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Hamster extends Herbivorous {
+public class Hamster extends Animal {
 
     public static AtomicInteger count = new AtomicInteger(0);
     private static final int maxPopulation = 500;
     public static final LinkedHashMap<Class<?>, Integer> chanceToEat = new LinkedHashMap<>();
 
     static {
-        chanceToEat.put(Caterpillar.class, 90);
+        chanceToEat.put(Caterpillar.class, 80);
         chanceToEat.put(Tree.class, 100);
     }
 

@@ -2,13 +2,12 @@ package Island.plants;
 
 import Island.Entity;
 import Island.Field;
-import Island.interfaces.Eatable;
 import Island.interfaces.Growable;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class Plants extends Entity implements Growable, Eatable {
+public abstract class Plants extends Entity implements Growable {
 
     public int countDaysFlow;
     public AtomicInteger flowering;

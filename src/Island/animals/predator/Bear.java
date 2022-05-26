@@ -1,13 +1,14 @@
 package Island.animals.predator;
 
 import Island.Field;
+import Island.animals.Animal;
 import Island.animals.herbivorous.*;
 
 import java.util.LinkedHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Bear extends Predator {
+public class Bear extends Animal {
 
     private static final int maxPopulation = 5;
     public static AtomicInteger count = new AtomicInteger(0);

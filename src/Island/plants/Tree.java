@@ -13,7 +13,7 @@ public class Tree extends Plants {
     public Tree() {
 
         setWeight(ThreadLocalRandom.current().nextDouble(0.1, 70.0));
-        setBreedingPow(4);
+        setBreedingPow(2);
         setFlowering(new AtomicInteger(2));
         setSeedRate(6);
         setCountDaysFlow(4);
